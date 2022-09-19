@@ -4,7 +4,7 @@ const https = require("https");
 const app = express(); //create app constant using express
 
 app.use(express.static("public")); // we acces the static documents
-
+app.set("view engine", "ejs");
 
 app.get("/", function(req, res) { // create a get route that sends the browser the file index.html when a user acces the home route "/"
   // res.sendFile(__dirname + "/index.html");
@@ -13,9 +13,13 @@ app.get("/", function(req, res) { // create a get route that sends the browser t
   var today = new Date();
   var currentDay = today.getDay();
   if(currentDay === 6 || currentDay === 0){
-    res.send("Yey it's the weekend");
+    res.write("<h1>Yey it's the weekend</h1>");
   } else {
-    res.send("Boo! I have to work!");
+    res.sendFile(__dirname + "/index.html");
+    //this ^ is equal with ths v
+    //res.write("<h1>Boo! I have to work!</h1>");
+    //res.write("<p>It is not the weekend.</p>");
+    //res.send(); // we can use only one res.send to sent the information but we can use multimple res.write to write the information and then send it with res.send
   }
 
 
