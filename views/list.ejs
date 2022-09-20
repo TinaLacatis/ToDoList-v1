@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8">
-  <title>To Do List</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
+<%- include("header") -%>
 
-<body>
   <div class="box" id="heading">
-    <h1><%= kindOfDay%></h1>
+    <h1><%= listTitle%></h1>
   </div>
 
   <div class="box">
-    <%  for(var i=0; i<newListItems.length; i++){ %>
+    <%  for(let i=0; i<newListItems.length; i++){ %>
     <div class="item">
       <input type="checkbox">
       <p><%= newListItems[i] %></p>
@@ -22,21 +15,17 @@
 
     <form class="item" action="/" method="post">
       <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-      <button type="submit" name="button">+</button>
+      <button type="submit" name="list" value= <%= listTitle %> >+</button>
     </form>
   </div>
 
-
-
   <!--
-  <%  if (kindOfDay === "Saturday" || kindOfDay === "Sunday"){ %> //the marks are used to modify the content based on the variable
-      <h1 style="color: purple"><%= kindOfDay %> ToDo List</h1>
+  <%  if (listTitle === "Saturday" || listTitle === "Sunday"){ %> //the marks are used to modify the content based on the variable
+      <h1 style="color: purple"><%= listTitle %> ToDo List</h1>
   <%  } else { %>
-      <h1 style="color: blue"><%= kindOfDay %> ToDo List</h1>
+      <h1 style="color: blue"><%= listTitle %> ToDo List</h1>
   <%  } %>
 -->
-  <!-- <h1>It's a <%= kindOfDay %>!</h1> -->
+  <!-- <h1>It's a <%= listTitle %>!</h1> -->
 
-</body>
-
-</html>
+<%- include("footer") -%>
